@@ -32,3 +32,6 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
+get_user_shell() {
+  finger "$USER" | awk 'match($0, /Shell: (.*)/) {print $4}'
+}
